@@ -1,13 +1,7 @@
 
     <?php
-    
-    
-
-    //import database
+  
     include("../connection.php");
-
-
-
     if($_POST){
         //print_r($_POST);
         $result= $database->query("select * from webuser");
@@ -24,7 +18,6 @@
         if ($password==$cpassword){
             $error='3';
             $result= $database->query("select doctor.docid from doctor inner join webuser on doctor.docemail=webuser.email where webuser.email='$email';");
-            //$resultqq= $database->query("select * from doctor where docid='$id';");
             if($result->num_rows==1){
                 $id2=$result->fetch_assoc()["docid"];
             }else{
@@ -33,10 +26,8 @@
             
             echo $id2."jdfjdfdh";
             if($id2!=$id){
-                $error='1';
-                //$resultqq1= $database->query("select * from doctor where docemail='$email';");
-                //$did= $resultqq1->fetch_assoc()["docid"];
-                //if($resultqq1->num_rows==1){
+                $error='1'
+                if($resultqq1->num_rows==1){
                     
             }else{
 
@@ -61,7 +52,6 @@
         
         
     }else{
-        //header('location: signup.php');
         $error='3';
     }
     
