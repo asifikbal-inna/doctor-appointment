@@ -16,22 +16,15 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-    //Unset all the server side variables
-
     session_start();
 
     $_SESSION["user"]="";
     $_SESSION["usertype"]="";
-    
-    // Set the new timezone
-    date_default_timezone_set('Asia/Kolkata');
+ 
+    date_default_timezone_set('Asia/bangladesh');
     $date = date('Y-m-d');
 
     $_SESSION["date"]=$date;
-    
-
-    //import database
     include("connection.php");
 
     
@@ -51,9 +44,6 @@
             if ($utype=='p'){
                 $checker = $database->query("select * from patient where pemail='$email' and ppassword='$password'");
                 if ($checker->num_rows==1){
-
-
-                    //   Patient dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='p';
                     
@@ -67,8 +57,6 @@
                 $checker = $database->query("select * from admin where aemail='$email' and apassword='$password'");
                 if ($checker->num_rows==1){
 
-
-                    //   Admin dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='a';
                     
@@ -83,8 +71,6 @@
                 $checker = $database->query("select * from doctor where docemail='$email' and docpassword='$password'");
                 if ($checker->num_rows==1){
 
-
-                    //   doctor dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='d';
                     header('location: doctor/index.php');
