@@ -26,8 +26,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -40,9 +38,7 @@
     }else{
         header("location: ../login.php");
     }
-    
 
-    //import database
     include("../connection.php");
     $userrow = $database->query("select * from patient where pemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
@@ -50,9 +46,6 @@
     $username=$userfetch["pname"];
 
 
-    //echo $userid;
-    //echo $username;
-    
     ?>
     <div class="container">
         <div class="menu">
