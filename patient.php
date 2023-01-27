@@ -21,8 +21,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -35,18 +33,12 @@
     }else{
         header("location: ../login.php");
     }
-    
-
-    //import database
     include("../connection.php");
     $userrow = $database->query("select * from doctor where docemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
     $userid= $userfetch["docid"];
     $username=$userfetch["docname"];
 
-
-    //echo $userid;
-    //echo $username;
     ?>
     <div class="container">
     <div class="menu">
@@ -149,7 +141,6 @@
                             <?php
                                 echo '<datalist id="patient">';
                                 $list11 = $database->query($sqlmain);
-                               //$list12= $database->query("select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=1;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){
                                     $row00=$list11->fetch_assoc();
